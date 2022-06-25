@@ -24,4 +24,41 @@ public interface ITOrderService extends IService<TOrder> {
     TOrder seckill(TUser user, GoodsVo goods);
 
     OrderDeatilVo detail(Long orderId);
+
+    /**
+     * 获取秒杀地址
+     *
+     * @param user
+     * @param goodsId
+     * @return java.lang.String
+     * @author LiChao
+     * @operation add
+     * @date 2:59 下午 2022/3/9
+     **/
+    String createPath(TUser user, Long goodsId);
+
+    /**
+     * 校验秒杀地址
+     *
+     * @param user
+     * @param goodsId
+     * @param path
+     * @return boolean
+     * @author LiChao
+     * @operation add
+     * @date 2:59 下午 2022/3/9
+     **/
+    boolean checkPath(TUser user, Long goodsId, String path);
+
+    /**
+     * 校验验证码
+     * @author LiChao
+     * @operation add
+     * @date 3:52 下午 2022/3/9
+     * @param tuser
+     * @param goodsId
+     * @param captcha
+     * @return boolean
+     **/
+    boolean checkCaptcha(TUser tuser, Long goodsId, String captcha);
 }

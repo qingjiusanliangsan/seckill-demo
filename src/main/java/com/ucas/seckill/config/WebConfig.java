@@ -21,6 +21,9 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Autowired
     private UserArgumentResolver userArgumentResolver;
+    @Autowired
+    private AccessLimitInterceptor accessLimitInterceptor;
+
 
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
@@ -38,10 +41,8 @@ public class WebConfig implements WebMvcConfigurer {
 //        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 
-//    @Autowired
-//    private AccessLimitInterceptor accessLimitInterceptor;
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(accessLimitInterceptor);
-//    }
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(accessLimitInterceptor);
+    }
 }
